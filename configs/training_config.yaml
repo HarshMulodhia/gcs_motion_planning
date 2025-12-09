@@ -1,0 +1,50 @@
+# GCS-RL Training Configuration
+# ============================
+
+# Training Parameters
+training:
+  num_episodes: 1000
+  learning_rate: 0.001
+  batch_size: 32
+  gamma: 0.99
+  gae_lambda: 0.95
+  entropy_coefficient: 0.01
+  value_loss_coefficient: 0.5
+  max_gradient_norm: 0.5
+  early_stopping_patience: 50
+
+# GCS Planner Parameters
+gcs:
+  dimension: 3
+  num_convex_sets: 5
+  solver_type: "ECOS"
+  verbose: false
+
+# Visualization Settings
+visualization:
+  use_meshcat: true
+  meshcat_url: "tcp://127.0.0.1:6000"
+  meshcat_fallback: true
+  use_plotly: true
+  use_pyvista: false
+  render_frequency: 10
+
+# Logging & Checkpointing
+logging:
+  level: "INFO"
+  log_interval: 10
+  save_interval: 50
+  checkpoint_dir: "./checkpoints"
+  log_dir: "./logs"
+
+# W&B Integration
+wandb:
+  enabled: false
+  project: "gcs-rl"
+  entity: null
+
+# Environment
+environment:
+  seed: 42
+  device: "cpu"
+  num_workers: 1
