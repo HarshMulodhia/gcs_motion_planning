@@ -38,7 +38,6 @@ A comprehensive, production-ready framework for **optimal motion planning** usin
 
 - 4 Jupyter notebooks covering theory → implementation → applications
 - Detailed docstrings and type hints throughout
-- Academic paper and technical report
 - File-by-file functionality guide
 
 ---
@@ -132,44 +131,44 @@ pv_vis.show()
 
 ```
 ┌─────────────────────────────────────────────────────────┐
-│           GCS Motion Planning Framework                  │
+│           GCS Motion Planning Framework                 │
 ├─────────────────────────────────────────────────────────┤
-│                                                          │
-│  ┌──────────────────┐         ┌────────────────────┐   │
-│  │  GCS Builder     │         │     Solver         │   │
-│  │                  │         │                    │   │
-│  │ • Graph creation │────────→│ • Optimization     │   │
-│  │ • Regions        │         │ • Trajectory       │   │
-│  │ • Path finding   │         │ • Feasibility      │   │
-│  └──────────────────┘         └────────────────────┘   │
-│         │                              │                 │
+│                                                         │
+│  ┌──────────────────┐         ┌────────────────────┐    │
+│  │  GCS Builder     │         │     Solver         │    │
+│  │                  │         │                    │    │
+│  │ • Graph creation │────────→│ • Optimization     │    │
+│  │ • Regions        │         │ • Trajectory       │    │
+│  │ • Path finding   │         │ • Feasibility      │    │
+│  └──────────────────┘         └────────────────────┘    │
+│         │                              │                │
 │         └──────────┬───────────────────┘                │
-│                    │                                     │
+│                    │                                    │
 │         ┌──────────▼──────────┐                         │
 │         │   Solution          │                         │
 │         │ - Waypoints         │                         │
 │         │ - Path sequence     │                         │
 │         │ - Metrics           │                         │
 │         └──────────┬──────────┘                         │
-│                    │                                     │
+│                    │                                    │
 │    ┌───────────────┼───────────────┐                    │
 │    │               │               │                    │
 │    ▼               ▼               ▼                    │
-│  ┌──────┐     ┌──────────┐     ┌────────┐             │
-│  │Mesh  │     │PyVista   │     │Plotly  │             │
-│  │Cat   │     │Science   │     │Metrics │             │
-│  └──────┘     └──────────┘     └────────┘             │
+│  ┌──────┐     ┌──────────┐     ┌────────┐               │
+│  │Mesh  │     │PyVista   │     │Plotly  │               │
+│  │Cat   │     │Science   │     │Metrics │               │
+│  └──────┘     └──────────┘     └────────┘               │
 │     ▲              ▲                ▲                   │
 │     │              │                │                   │
-│  ┌──────────────────────────────────────┐              │
-│  │    Training Pipeline                 │              │
-│  │ - Gradient clipping                 │              │
-│  │ - Early stopping                    │              │
-│  │ - Warm-start optimization           │              │
-│  │ - LRU caching                       │              │
-│  │ - W&B logging                       │              │
-│  └──────────────────────────────────────┘              │
-│                                                          │
+│  ┌──────────────────────────────────────┐               │
+│  │    Training Pipeline                 │               │
+│  │ - Gradient clipping                  │               │
+│  │ - Early stopping                     │               │
+│  │ - Warm-start optimization            │               │
+│  │ - LRU caching                        │               │
+│  │ - W&B logging                        │               │
+│  └──────────────────────────────────────┘               │
+│                                                         │
 └─────────────────────────────────────────────────────────┘
 ```
 
@@ -475,10 +474,10 @@ This project is licensed under the MIT License - see [LICENSE](LICENSE) file for
 If you use this framework in research, please cite:
 
 ```bibtex
-@software{mulodhia2024gcs,
+@software{mulodhia2025gcs,
   title={GCS Motion Planning: A Production-Ready Framework for Optimal Trajectory Planning},
   author={Mulodhia, Harsh},
-  year={2024},
+  year={2025},
   url={https://github.com/HarshMulodhia/gcs_motion_planning}
 }
 ```
@@ -534,5 +533,5 @@ If you use this framework in research, please cite:
 
 ---
 
-**Last Updated**: December 2024 | **Version**: 0.1.0 | **Status**: Production Ready ✅
+**Last Updated**: December 2025 | **Version**: 0.1.0 | **Status**: Production Ready ✅
 
