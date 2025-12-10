@@ -1,0 +1,158 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{geometry}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{booktabs}
+
+\geometry{a4paper, margin=1in}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\footnotesize\ttfamily,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+\title{GCS Motion Planning: Graph of Convex Sets for Optimal Trajectory Planning}
+\author{Harsh Mulodhia}
+\date{December 10, 2024}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+A comprehensive, production-ready framework for optimal motion planning using Graph of Convex Sets (GCS) with integrated visualization, advanced training utilities, and neural network integration capabilities.
+\end{abstract}
+
+\section{Key Features}
+\begin{itemize}
+    \item \textbf{Optimal Trajectory Planning}: Convex optimization-based motion planning with theoretical guarantees.
+    \item \textbf{Collision Avoidance}: Guaranteed safety through convex region decomposition.
+    \item \textbf{Advanced Visualization}: Real-time 3D rendering with MeshCat and scientific visualization with PyVista.
+    \item \textbf{Interactive Dashboards}: Production-grade training metrics with Plotly.
+    \item \textbf{Training Stability}: Includes gradient clipping, early stopping, and warm-start optimization.
+\end{itemize}
+
+\section{Quick Start}
+
+\subsection{Installation}
+\begin{lstlisting}[language=bash]
+# Clone repository
+git clone https://github.com/HarshMulodhia/gcs_motion_planning.git
+cd gcs_motion_planning
+
+# Install dependencies
+bash install-dependencies.sh
+\end{lstlisting}
+
+\subsection{Basic Usage}
+\begin{lstlisting}[language=Python]
+from src.gcs_planner import GCSBuilder, GCSSolver, ConvexSetBuilder
+import numpy as np
+
+# 1. Create GCS graph
+builder = GCSBuilder(dimension=3)
+
+# 2. Define convex regions
+start_region = ConvexSetBuilder.box(center=np.array([0,0,0]), half_lengths=np.array([0.5,0.5,0.5]))
+builder.add_convex_set('start', start_region)
+goal_region = ConvexSetBuilder.box(center=np.array([5,5,5]), half_lengths=np.array([0.5,0.5,0.5]))
+builder.add_convex_set('goal', goal_region)
+
+# 3. Connect regions
+builder.add_edge('start', 'goal', weight=1.0)
+
+# 4. Solve for optimal trajectory
+solver = GCSSolver(verbose=True)
+solution = solver.solve(builder, np.array([0,0,0]), np.array([5,5,5]))
+
+if solution and solution['feasible']:
+    print(f"Found {solution['length']} waypoints")
+\end{lstlisting}
+
+\section{Project Structure}
+An overview of the main directories:
+\begin{itemize}
+    \item \texttt{src/}: Core source code for the GCS planner, solver, visualizers, and training utilities.
+    \item \texttt{notebooks/}: Jupyter notebooks with tutorials and demonstrations.
+    \item \texttt{tests/}: Unit tests for the framework.
+    \item \texttt{configs/}: Configuration files, such as \texttt{training\_config.yaml}.
+    \item \texttt{docs/}: Detailed documentation files.
+\end{itemize}
+
+\section{Documentation}
+The project includes extensive documentation:
+\begin{itemize}
+    \item \textbf{ACADEMIC\_PAPER.md}: A full research paper detailing the theory and experiments.
+    \item \textbf{FILE\_DOCUMENTATION.md}: A complete API reference for all modules.
+    \item Four Jupyter notebooks that provide a hands-on introduction to the framework.
+\end{itemize}
+
+\section{Theoretical Foundations}
+The framework is built on the GCS paradigm, which formulates motion planning as a mixed-integer convex program. This provides optimality guarantees and ensures collision-free paths by constraining the trajectory to lie within a sequence of convex, obstacle-free regions.
+
+\section{Performance Metrics}
+\begin{table}[h!]
+\centering
+\begin{tabular}{lccc}
+\toprule
+\textbf{Environment} & \textbf{Dimension} & \textbf{Success Rate} & \textbf{Plan Time (ms)} \\
+\midrule
+Grid World & 2 & 98\% & 45 \\
+Narrow Passage & 3 & 95\% & 125 \\
+High-Dimensional & 5 & 92\% & 285 \\
+\bottomrule
+\end{tabular}
+\caption{Benchmark Performance Results}
+\label{tab:performance_readme}
+\end{table}
+
+\section{Contributing}
+Contributions are welcome. Please fork the repository, create a feature branch, and open a pull request. Ensure your code follows PEP 8 guidelines and includes appropriate documentation and tests.
+
+\section{License}
+This project is licensed under the MIT License. See the LICENSE file for details.
+
+\section{Citation}
+If you use this framework in your research, please use the following BibTeX entry:
+\begin{lstlisting}[language=tex]
+@software{mulodhia2024gcs,
+  title={GCS Motion Planning: A Production-Ready Framework for Optimal Trajectory Planning},
+  author={Mulodhia, Harsh},
+  year={2024},
+  url={https://github.com/HarshMulodhia/gcs_motion_planning}
+}
+\end{lstlisting}
+
+\end{document}

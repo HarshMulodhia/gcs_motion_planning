@@ -198,8 +198,8 @@ class MeshCatVisualizer:
             return
 
         try:
-            center = np.asarray(center, dtype=np.float32)
-            size = np.asarray(size, dtype=np.float32)
+            #center = np.asarray(center, dtype=np.float32)
+            #size = np.asarray(size, dtype=np.float32)
 
             # Convert RGB to integer color
             r = int(color[0]) if color[0] <= 255 else int(color[0] * 255)
@@ -208,7 +208,7 @@ class MeshCatVisualizer:
             color_int = (r << 16) | (g << 8) | b
 
             # CORRECT: Box takes 3 positional arguments (width, height, depth)
-            geometry = self.geometry.Box(*size)
+            geometry = self.geometry.Box(size)
             material = self.geometry.MeshPhongMaterial(
                 color=color_int,
                 wireframe=False,
