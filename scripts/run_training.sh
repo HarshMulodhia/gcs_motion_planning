@@ -1,12 +1,9 @@
 #!/bin/bash
 
-# GCS-RL Training Launch Script
-# ==============================
-
 set -e
 
 echo "================================"
-echo "GCS-RL Training Launch"
+echo "GCS Training Launch"
 echo "================================"
 
 # Set directories
