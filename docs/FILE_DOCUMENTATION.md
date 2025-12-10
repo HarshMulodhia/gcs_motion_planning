@@ -590,7 +590,7 @@ vis.print_url()  # Print http://localhost:6000
         ┌─────────────────────────────────┐
         │ Loss    │ Reward  │ Success Rate│
         ├─────────────────────────────────┤
-        │Path Len │Plan Time│ Ep. Count  │
+        │Path Len │Plan Time│ Ep. Count   │
         └─────────────────────────────────┘
       
       Features:
@@ -1145,6 +1145,6 @@ Training:
 
 ---
 
-**Last Updated:** December 2024
+**Last Updated:** December 2025
 **Framework Version:** 0.1.0
 **Status:** Production Ready
